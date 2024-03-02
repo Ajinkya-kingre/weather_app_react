@@ -48,7 +48,7 @@ export default function Weather() {
         handleSearch={handleSearch}
       />
       {loading ? (
-        <div>Loading Data!!! Please Wait!</div>
+        <div className="loading">Loading!!!</div>
       ) : (
         <div>
           <div className="city-name">
@@ -57,9 +57,25 @@ export default function Weather() {
             </h2>
           </div>
           <div className="date">{getCurrData()}</div>
-          <div>{weatherData?.main?.temp}</div>
-          <div className="description">
-            {weatherData && weatherData.weather && weatherData.weather[0] ? weatherData.weather[0].description : ""}
+          <div className="temp">{weatherData?.main?.temp}</div>
+          <p className="description">
+            {weatherData && weatherData.weather && weatherData.weather[0]
+              ? weatherData.weather[0].description
+              : ""}
+          </p>
+          <div className="info">
+            <div className="column">
+              <div >
+                <p className="wind">{weatherData?.wind?.speed}</p>
+                <p>Wind Speed</p>
+              </div>
+            </div>
+            <div  className="column">
+              <div>
+                <p className="humidity">{weatherData?.main?.humidity}%</p>
+                <p>Humidity</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
